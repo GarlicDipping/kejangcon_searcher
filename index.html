@@ -4,16 +4,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>케장콘 검색기</title>
     <style type="text/css">
-        .headerdiv {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+        header {
+            margin: auto;
+            width: 50%;
+            align-items: center;
+            position: relative;
         }
 
-        .center {
-            margin: 0 auto;
-            text-align: center
+        main {
+            margin: auto;
+            width: 50%;
+            align-items: center;
+            position: relative;
         }
+
 
         h1 {
             font-family: '굴림체';
@@ -23,6 +27,23 @@
         p {
             font-family: '굴림체';
             font-size: 10pt;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        /* Create two equal columns that sits next to each other */
+        .column {
+            flex: 25%;
+            padding: 0 4px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
         }
     </style>
     <script src="./data/kejangcon_data.js" type="text/javascript"></script>
@@ -34,17 +55,24 @@
 
 <body>
 
-    <div class="headerdiv">
+    <header>
         <h1>
             케장콘검<br />
             색기<br />
         </h1>
-        <input type="text" id="search_input" placeholder="검색어를 입력하세요" />
+    </header>
+    <main>
         <div>
-            <p>검색 결과</p>
-            <p id="search_result_text"></p>
-          </div>
-    </div>
+            <div>
+                <input type="text" id="search_input" placeholder="검색어를 입력하세요" />
+            </div>
+            <div>
+                <p id="search_result_text"></p>
+                <div id="search_result_table" class="row">
+                </div>
+            </div>
+        </div>
+    </main>
 
 </body>
 

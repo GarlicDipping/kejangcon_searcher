@@ -14,7 +14,9 @@ kejangcon_data = [
       "order_id": 2,
       "tags": [
         "감사합니다 SENSEI",
-        "캄사합니다 SENSEI"
+        "캄사합니다 SENSEI",
+        "크흑 감사합니다",
+        "센세이",
       ]
     }
 ]

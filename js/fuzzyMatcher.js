@@ -40,10 +40,8 @@ function ch2pattern(ch) {
 
         return "[".concat(ch, "\\u").concat(_begin.toString(16), "-\\u").concat(_end.toString(16), "]");
     } // 그 외엔 그대로 내보냄
-    // escapeRegExp는 lodash에서 가져옴
 
-
-    return (0, _lodash["default"])(ch);
+    return escapeRegExp(ch);
 }
 
 function createFuzzyMatcher(input) {
@@ -52,3 +50,8 @@ function createFuzzyMatcher(input) {
     }).join(".*?");
     return new RegExp(pattern);
 }
+
+function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+  }
+  
