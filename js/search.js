@@ -1,7 +1,7 @@
 function setup() {
     input.addEventListener("keyup", function () {
         var val = input.value.trim();
-        var columnWrappers = [];
+        // var columnWrappers = [];
         search_result_table.innerHTML = '';
         if (!val) {
             //공백, Do nothing
@@ -13,28 +13,26 @@ function setup() {
             return regex.test(row["tags"]);
         });
         search_result_text.innerHTML = "<p>" + resultDatas.length + "개 찻앗구...ㅎ</p>";
-        var row_count = Math.floor(resultDatas.length / 4) + 1;        
-        for(var i = 0; i < row_count; i++){
-            columnWrappers[i] = document.createElement('div');
-            columnWrappers[i].className = 'column';
-            columnWrappers[i].id = 'col_' + i;
-            //('<div class="column" id="col_' + i + '"></div>');
-            search_result_table.appendChild(columnWrappers[i]);
-        }
+        // var row_count = Math.floor(resultDatas.length / 4) + 1;        
+        // for(var i = 0; i < row_count; i++){
+        //     columnWrappers[i] = document.createElement('div');
+        //     columnWrappers[i].className = 'column';
+        //     columnWrappers[i].id = 'col_' + i;
+        //     //('<div class="column" id="col_' + i + '"></div>');
+        //     search_result_table.appendChild(columnWrappers[i]);
+        // }
         for(var i = 0; i < resultDatas.length; i++){
             var row = Math.floor(i / 4);
             var imgName = resultDatas[i].pid;
             var figElem = document.createElement('figure');
             var imgElem = document.createElement('img');
-            imgElem.width = 100;
-            imgElem.height = 100;
             imgElem.src = "./img/kejangcon/loading.gif";
             tryImages(imgElem, resultDatas[i].group_id, imgName);
             var figCaptionElem = document.createElement('figcaption');
             figCaptionElem.textContent = '케장콘 ' + resultDatas[i].group_id;
             figElem.appendChild(imgElem);
             figElem.appendChild(figCaptionElem);
-            columnWrappers[row].appendChild(figElem);
+            search_result_table.appendChild(figElem);
         }
     }, false);
 }
