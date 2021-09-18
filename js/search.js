@@ -27,19 +27,19 @@ function setup() {
             newElem.src = "./img/kejangcon/loading.gif";
             newElem.width = 100;
             newElem.height = 100;
-            tryImages(newElem, imgName);
+            tryImages(newElem, resultDatas[i].group_id, imgName);
             //('<img src="' + imgSrc + '">');
             columnWrappers[row].appendChild(newElem);
         }
     }, false);
 }
 
-function tryImages(img, name) {
-    img.src = "./img/kejangcon/" + name + ".jpg";
+function tryImages(img, group_id, name) {
+    img.src = "./img/kejangcon/" + group_id + "/" + name + ".jpg";
     img.onerror = function() {
-        img.src = "./img/kejangcon/" + name + ".png";
+        img.src = "./img/kejangcon/" + group_id + "/" + name + ".png";
         img.onerror = function() {
-            img.src = "./img/kejangcon/" + name + ".gif";
+            img.src = "./img/kejangcon/" + group_id + "/" + name + ".gif";
             img.onerror = function(){
                 img.src = "./img/kejangcon/error.png";
             }
