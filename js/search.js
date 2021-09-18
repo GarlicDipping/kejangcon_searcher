@@ -1,8 +1,11 @@
 function setup() {
     input.addEventListener("keyup", function () {
         var val = input.value.trim();
+        var columnWrappers = [];
+        search_result_table.innerHTML = '';
         if (!val) {
             //공백, Do nothing
+            search_result_text.innerHTML = "<p>" + 0 + "개 찻앗구...ㅎ</p>";
             return;
         }
         var regex = createFuzzyMatcher(val);
@@ -10,9 +13,7 @@ function setup() {
             return regex.test(row["tags"]);
         });
         search_result_text.innerHTML = "<p>" + resultDatas.length + "개 찻앗구...ㅎ</p>";
-        var row_count = Math.floor(resultDatas.length / 4) + 1;
-        var columnWrappers = [];
-        search_result_table.innerHTML = '';
+        var row_count = Math.floor(resultDatas.length / 4) + 1;        
         for(var i = 0; i < row_count; i++){
             columnWrappers[i] = document.createElement('div');
             columnWrappers[i].className = 'column';
@@ -23,13 +24,17 @@ function setup() {
         for(var i = 0; i < resultDatas.length; i++){
             var row = Math.floor(i / 4);
             var imgName = resultDatas[i].pid;
-            var newElem = document.createElement('img');
-            newElem.src = "./img/kejangcon/loading.gif";
-            newElem.width = 100;
-            newElem.height = 100;
-            tryImages(newElem, resultDatas[i].group_id, imgName);
-            //('<img src="' + imgSrc + '">');
-            columnWrappers[row].appendChild(newElem);
+            var figElem = document.createElement('figure');
+            var imgElem = document.createElement('img');
+            imgElem.width = 100;
+            imgElem.height = 100;
+            imgElem.src = "./img/kejangcon/loading.gif";
+            tryImages(imgElem, resultDatas[i].group_id, imgName);
+            var figCaptionElem = document.createElement('figcaption');
+            figCaptionElem.textContent = '케장콘 ' + resultDatas[i].group_id;
+            figElem.appendChild(imgElem);
+            figElem.appendChild(figCaptionElem);
+            columnWrappers[row].appendChild(figElem);
         }
     }, false);
 }
