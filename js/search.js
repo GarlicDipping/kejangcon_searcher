@@ -49,7 +49,17 @@ function setup() {
             return { row, longestDistance };
         });
         resultDatas.sort((a, b) => {
-            return a.longestDistance - b.longestDistance;
+            var aRowContainsKeyword = rowTagContainsKeyword(a.row, val);
+            var bRowContainsKeyword = rowTagContainsKeyword(b.row, val);
+            if(aRowContainsKeyword && !bRowContainsKeyword){
+                return -100;
+            }
+            else if(!aRowContainsKeyword && bRowContainsKeyword){
+                return 100;
+            }
+            else {
+                return a.longestDistance - b.longestDistance;
+            }
           });
 
         search_result_text.innerHTML = "<p>" + resultDatas.length + "개 찻앗구...ㅎ</p>";
@@ -69,6 +79,17 @@ function setup() {
     }, false);
 
     window.addEventListener('resize', scrollSearchboxToTop);
+}
+
+function rowTagContainsKeyword(row, keyword){
+    for (const tag of row['tags']) {
+        let searchValIndex = tag.indexOf(keyword);
+        if(searchValIndex >= 0){
+            //유저가 검색한 문자열과 동일한 문자열이 태그에 존재할 경우 그리핀도르에 10점!
+            return true;
+        }
+    }
+    return false;
 }
 
 function tryImages(img, group_id, name) {
