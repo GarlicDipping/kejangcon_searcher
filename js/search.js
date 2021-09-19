@@ -8,6 +8,7 @@ function scrollSearchboxToTop(){
     var timing = 250;
     $htmlOrBody.animate({ scrollTop: textareaTop - scrollTopPadding }, timing);    
 }
+
 function setup() {
     input.addEventListener("focus", scrollSearchboxToTop);
     input.addEventListener("keyup", function () {        
@@ -46,7 +47,7 @@ function setup() {
         }
     }, false);
 
-    search_result_table.addEventListener('resize', scrollSearchboxToTop);
+    window.addEventListener('resize', scrollSearchboxToTop);
 }
 
 function tryImages(img, group_id, name) {
