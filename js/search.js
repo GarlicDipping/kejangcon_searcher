@@ -10,8 +10,7 @@ function scrollSearchboxToTop(){
 }
 function setup() {
     input.addEventListener("focus", scrollSearchboxToTop);
-    input.addEventListener("keyup", function () {
-        scrollSearchboxToTop();
+    input.addEventListener("keyup", function () {        
         var val = input.value.trim();
         // var columnWrappers = [];
         search_result_table.innerHTML = '';
@@ -46,6 +45,8 @@ function setup() {
             search_result_table.appendChild(figElem);
         }
     }, false);
+
+    search_result_table.addEventListener('resize', scrollSearchboxToTop);
 }
 
 function tryImages(img, group_id, name) {
@@ -73,13 +74,11 @@ var search_result_table;
     window.onload = init;
 
     function init() {
-
         // the code to be called when the dom has loaded
         // #document has its nodes
         input = document.getElementById("search_input");
         search_result_text = document.getElementById("search_result_text");
         search_result_table = document.getElementById("search_result_table");
-        
         search_result_text.innerHTML = "<p>0개 찻앗구...ㅎ</p>";
         setup();
     }
