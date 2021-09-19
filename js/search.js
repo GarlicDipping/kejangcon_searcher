@@ -2,16 +2,16 @@
 var $htmlOrBody = $('html, body'), // scrollTop works on <body> for some browsers, <html> for others
     scrollTopPadding = 8;
 
-$('search_input').focus(function() {
-    // get textarea's offset top position
+function scrollSearchboxToTop(){
     var textareaTop = $(this).offset().top;
     // scroll to the textarea
     var timing = 250;
-    $htmlOrBody.animate({ scrollTop: textareaTop - scrollTopPadding }, timing);
-});
-
+    $htmlOrBody.animate({ scrollTop: textareaTop - scrollTopPadding }, timing);    
+}
 function setup() {
+    input.addEventListener("focus", scrollSearchboxToTop);
     input.addEventListener("keyup", function () {
+        scrollSearchboxToTop();
         var val = input.value.trim();
         // var columnWrappers = [];
         search_result_table.innerHTML = '';
