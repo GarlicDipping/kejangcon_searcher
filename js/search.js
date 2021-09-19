@@ -22,9 +22,8 @@ function setup() {
         //     search_result_table.appendChild(columnWrappers[i]);
         // }
         for(var i = 0; i < resultDatas.length; i++){
-            var row = Math.floor(i / 4);
             var imgName = resultDatas[i].pid;
-            var figElem = document.createElement('figure');
+            var figElem = document.createElement('figure');            
             var imgElem = document.createElement('img');
             imgElem.src = "./img/kejangcon/loading.gif";
             tryImages(imgElem, resultDatas[i].group_id, imgName);

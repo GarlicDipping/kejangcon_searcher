@@ -1,0 +1,122 @@
+header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    max-width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+figure {
+    text-align: center;
+    display: inline-block;
+    max-width: 100px;
+    vertical-align: top;
+    margin: 10px;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+figcaption {
+    color: #000000;
+    background-color: #cccccc77;
+}
+
+.contents {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.jangcon_table{
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 1023px) {
+    header {
+        width: 90%;
+    }
+    main{
+        max-width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .contents {
+        width: 90%;
+    }
+    figure {
+        max-width: 80px;
+        margin: 6px;
+    }
+    img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 767px) {
+    header {
+        width: 90%;
+    }
+    main{
+        max-width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .contents {
+        width: 90%;
+    }
+    figure {
+        max-width: 80px;
+        margin: 6px;
+    }
+    img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+h1 {
+    font-family: '굴림체';
+    font-size: 60pt;
+}
+
+p {
+    font-family: '굴림체';
+    font-size: 10pt;
+}
+
+.form input[type=text], .form input[type=password] {
+    display: block;
+}
+
+input[type=text], input[type=password] {
+    display: inline-block;
+    color: white;
+    padding: 10px;
+    width: 300px;
+    box-sizing: border-box;
+    background-color: rgba(212, 212, 212, 0.75);
+    border: none;
+    border-radius: 2px;
+    margin: 10px auto;
+    transition: background-color 0.5s ease;
+}
