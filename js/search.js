@@ -13,7 +13,6 @@ function setup() {
     input.addEventListener("focus", scrollSearchboxToTop);
     input.addEventListener("keyup", function () {        
         var val = input.value.trim();
-        // var columnWrappers = [];
         search_result_table.innerHTML = '';
         if (!val) {
             //공백, Do nothing
@@ -25,14 +24,6 @@ function setup() {
             return regex.test(row["tags"]);
         });
         search_result_text.innerHTML = "<p>" + resultDatas.length + "개 찻앗구...ㅎ</p>";
-        // var row_count = Math.floor(resultDatas.length / 4) + 1;        
-        // for(var i = 0; i < row_count; i++){
-        //     columnWrappers[i] = document.createElement('div');
-        //     columnWrappers[i].className = 'column';
-        //     columnWrappers[i].id = 'col_' + i;
-        //     //('<div class="column" id="col_' + i + '"></div>');
-        //     search_result_table.appendChild(columnWrappers[i]);
-        // }
         for(var i = 0; i < resultDatas.length; i++){
             var imgName = resultDatas[i].pid;
             var figElem = document.createElement('figure');            
