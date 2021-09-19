@@ -48,7 +48,7 @@ function setup() {
             }
             return { row, longestDistance };
         });
-        resultData.sort((a, b) => {
+        resultDatas.sort((a, b) => {
             return a.longestDistance - b.longestDistance;
           });
 
