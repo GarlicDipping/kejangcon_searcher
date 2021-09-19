@@ -1,3 +1,15 @@
+//https://stackoverflow.com/questions/18450659/scroll-textfield-up-when-keyboard-popsup/38593508
+var $htmlOrBody = $('html, body'), // scrollTop works on <body> for some browsers, <html> for others
+    scrollTopPadding = 8;
+
+$('search_input').focus(function() {
+    // get textarea's offset top position
+    var textareaTop = $(this).offset().top;
+    // scroll to the textarea
+    var timing = 250;
+    $htmlOrBody.animate({ scrollTop: textareaTop - scrollTopPadding }, timing);
+});
+
 function setup() {
     input.addEventListener("keyup", function () {
         var val = input.value.trim();
