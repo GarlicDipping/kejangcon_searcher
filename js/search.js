@@ -67,18 +67,35 @@ function setup() {
             var row = resultDatas[i].row;
             var imgName = row.pid;
             var figElem = document.createElement('figure');
+
+            var linkElem = document.createElement('a');
+            linkElem.href = getKakaoEmoticonShopLink(row.group_id);
+
             var imgElem = document.createElement('img');
             imgElem.src = "./img/kejangcon/loading.gif";
             tryImages(imgElem, row.group_id, imgName);
             var figCaptionElem = document.createElement('figcaption');
             figCaptionElem.textContent = '케장콘 ' + row.group_id;
-            figElem.appendChild(imgElem);
+            linkElem.appendChild(imgElem);
+            figElem.appendChild(linkElem);
             figElem.appendChild(figCaptionElem);
             search_result_table.appendChild(figElem);
         }
     }, false);
 
     window.addEventListener('resize', scrollSearchboxToTop);
+}
+
+function getKakaoEmoticonShopLink(group_id){
+    if(group_id == 1){
+        return 'https://e.kakao.com/t/kejang-con';
+    }
+    else if(group_id == 2){
+        return 'https://e.kakao.com/t/kejang-con-ver2';
+    }
+    else{
+        return 'https://e.kakao.com/t/kejang-con-ver-' + group_id;
+    }
 }
 
 function rowTagContainsKeyword(row, keyword){
