@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://garlicdipping.github.io/kejangcon_searcher/sitemap.xml
